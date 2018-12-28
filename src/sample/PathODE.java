@@ -5,7 +5,7 @@ import org.apache.commons.math3.ode.sampling.StepHandler;
 import org.apache.commons.math3.ode.sampling.StepInterpolator;
 
 
-public class Path implements StepHandler {
+public class PathODE implements StepHandler {
 
     private double h;
     private double v;
@@ -49,9 +49,16 @@ public class Path implements StepHandler {
         double t=stepInterpolator.getCurrentTime();
         double[] x=stepInterpolator.getInterpolatedState();
 
-        h=x[0];
+        //to poki co
+        if(x[0]<=0)
+            h=0;
+        else  h=x[0];
+
         v=x[1];
-        m=x[2];
+
+        if(x[2]<=1000)
+           m=1000;
+        else m=x[2];
 
         System.out.println("t= "+t+" "+h+" "+v+" "+m); //wyświeltenie wyniku symualcji
 

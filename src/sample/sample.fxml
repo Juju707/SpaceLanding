@@ -1,8 +1,30 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <center>
+      <Pane prefHeight="494.0" prefWidth="421.0" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <Pane prefHeight="494.0" prefWidth="307.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScatterChart fx:id="chart" layoutY="78.0" prefHeight="242.0" prefWidth="308.0">
+              <xAxis>
+                <NumberAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </ScatterChart>
+            <Button fx:id="btnUp" layoutX="130.0" layoutY="384.0" mnemonicParsing="false" onAction="#upClicked" prefHeight="25.0" prefWidth="48.0" text="Up" />
+            <Button fx:id="btnDown" layoutX="130.0" layoutY="433.0" mnemonicParsing="false" onAction="#downClicked" text="Down" />
+            <Button fx:id="btnStart" layoutX="134.0" layoutY="32.0" mnemonicParsing="false" onAction="#startClicked" text="Start" />
+         </children>
+      </Pane>
+   </right>
+</BorderPane>

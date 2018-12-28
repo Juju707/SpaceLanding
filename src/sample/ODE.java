@@ -34,7 +34,7 @@ public class ODE implements FirstOrderDifferentialEquations {
         //załóżmy że nasze x[0] to h,x[1] to v,x[2] to m
         dxdt[0] = x[1];
         dxdt[1] = -g-k*u/x[2];
-        dxdt[2]=x[1];
+        dxdt[2]= u;
     }
 }
 
