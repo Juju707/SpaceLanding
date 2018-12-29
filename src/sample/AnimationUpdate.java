@@ -1,52 +1,43 @@
 package sample;
 
-import com.sun.javafx.geom.Rectangle;
-import javafx.animation.PathTransition;
 import javafx.application.Platform;
-import javafx.scene.Group;
-import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.stage.Stage;
-import javafx.util.Duration;
-
-public class AnimationUpdate implements Observer, Display{
 
 
-    private Path path;//=new Path();
-    double xc = 200;//+Math.sin(x.get(0));
-    double yc = 250;//+Math.cos(x.get(0));
-    double r = 150f;
-    Circle circle = new Circle();
+public class AnimationUpdate implements Observer, Display {
 
-    void prepare(){
 
-        //srodek okregu po ktorym porusza sie wahadło
-        double xc = 200;//+Math.sin(x.get(0));
-        double yc = 250;//+Math.cos(x.get(0));
-        double r = 150f;
+    private double xc = 200;
+    private double yc = 10; //start
+    private double yend = 400;
+    private Circle circle = new Circle(); //to statek
+    private double pos = 0; //obliczanie pozycji statku
 
-        //utworzenie kulki wahadła
+    void prepare(Pane pane) {
 
-        circle.setCenterX(xc + r);
+        //start i stop
+        Circle end = new Circle();
+        end.setCenterX(200);
+        end.setCenterY(yend);
+        end.setRadius(5);
+        end.setStrokeWidth(5);
+
+        Circle start = new Circle();
+        start.setCenterX(xc);
+        start.setCenterY(yc);
+        start.setRadius(5);
+        start.setStrokeWidth(5);
+
+        //statek
+        circle.setCenterX(xc);
         circle.setCenterY(yc);
         circle.setRadius(5.0);
         circle.setStrokeWidth(5);
         circle.setFill(Color.MAGENTA);
-        path=new Path();
-        path.getElements().add(new MoveTo(xc , yc));
 
-        //tworze nowe okno
-        Stage stage = new Stage();
-        Group root = new Group(circle);
-
-        Scene scene = new Scene(root, 600, 600, Color.WHITE);
-        stage.setScene(scene);
-        stage.setTitle("Pendulum Animation");
-        stage.show();
+        pane.getChildren().addAll(circle, end, start);
 
 
     }
@@ -55,7 +46,8 @@ public class AnimationUpdate implements Observer, Display{
     public void update(MovementParameters movementParameters) {
 
         Platform.runLater(() -> {
-            path.getElements().add(new LineTo(xc, yc+movementParameters.getHeight()));
+            pos = (movementParameters.getHeight() / 12.82); //to 12.82 jest skad ze 5000 czyli wysokosc na 390 czyli droga do przejscia
+
         });
 
         display();
@@ -63,12 +55,8 @@ public class AnimationUpdate implements Observer, Display{
 
     @Override
     public void display() {
-        PathTransition pathTransition = new PathTransition();
-        pathTransition.setNode(circle);
-        pathTransition.setPath(path);
-        pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
-        pathTransition.setCycleCount(1);
-        //uruchomienie animacji kulki i linii
-        pathTransition.play();
+        //wyslanie statku na odpowiednia pozycje
+        circle.setCenterX(xc);
+        circle.setCenterY(yend - pos);
     }
 }
