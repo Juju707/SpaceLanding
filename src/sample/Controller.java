@@ -31,7 +31,6 @@ public class Controller {
 
 
     public void initialize() {
-
     }
 
     @FXML
@@ -66,10 +65,9 @@ public class Controller {
 
 
             rocketMovement.setUt(rocketMovement.getUt() - 1);
-            System.out.println(rocketMovement.getUt());
             if (rocketMovement.getUt() < -16.5)
                 rocketMovement.setUt(-16.5);
-
+        System.out.println(rocketMovement.getUt());
 
     }
 

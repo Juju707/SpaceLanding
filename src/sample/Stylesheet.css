@@ -1,0 +1,26 @@
+.chart {
+    -fx-background-image: url("ChartBackground.PNG");
+    -fx-legend-visible: false;
+}
+
+.chart-symbol {
+    /* cross */
+    -fx-background-color: #0181e2;
+    -fx-shape: "M2,0 L5,4 L8,0 L10,0 L10,2 L6,5 L10,8 L10,10 L8,10 L5,6 L2,10 L0,10 L0,8 L4,5 L0,2 L0,0 Z";
+}
+#chartPane {
+    -fx-background-color: black;
+}
+#Cockpit{
+    -fx-background-image: url("Cockpit.jpg");
+}
+#usePane{
+    -fx-background-image: url("ChartBackground.PNG");
+    -fx-border-color:purple;
+}
+#animationPane{
+    -fx-background-image: url("AnimationBackground.gif");
+    -fx-background-repeat: stretch;  
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+}
