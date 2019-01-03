@@ -24,12 +24,12 @@
                 <NumberAxis prefHeight="188.0" prefWidth="12.0" side="LEFT" />
               </yAxis>
             </ScatterChart>
-            <Button fx:id="btnStart" layoutX="134.0" layoutY="14.0" mnemonicParsing="false" onAction="#startClicked" text="Start" />
+            <Button fx:id="btnStart" layoutX="138.0" layoutY="14.0" mnemonicParsing="false" onAction="#startClicked" text="Start" />
             <Pane fx:id="Cockpit" layoutY="294.0" prefHeight="200.0" prefWidth="307.0">
                <children>
                   <Pane fx:id="usePane" layoutX="241.0" layoutY="25.0" prefHeight="130.0" prefWidth="66.0">
                      <children>
-                        <TextField fx:id="FuelUsageField" layoutX="9.0" layoutY="29.0" prefHeight="25.0" prefWidth="49.0" />
+                        <TextField fx:id="FuelUsageField" editable="false" layoutX="9.0" layoutY="29.0" prefHeight="25.0" prefWidth="49.0" />
                         <Button fx:id="btnUp" layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#upClicked" prefHeight="25.0" prefWidth="48.0" text="Up" />
                         <Button fx:id="btnDown" layoutX="11.0" layoutY="97.0" mnemonicParsing="false" onAction="#downClicked" text="Down" />
                         <Label fx:id="fuelLabel" layoutX="4.0" layoutY="6.0" text="Fuel Usage" textFill="WHITE">
@@ -39,6 +39,12 @@
                         </Label>
                      </children>
                   </Pane>
+                  <Label fx:id="speedLabel" layoutX="149.0" layoutY="126.0" text="Current speed" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="speedField" editable="false" layoutX="153.0" layoutY="155.0" prefHeight="28.0" prefWidth="71.0" />
                </children>
             </Pane>
          </children>

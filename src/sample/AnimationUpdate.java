@@ -15,7 +15,7 @@ public class AnimationUpdate implements Observer, Display {
     private Circle circle = new Circle(); //to statek
     private double pos = 0; //obliczanie pozycji statku
 
-    void prepare(Pane pane) {
+    public void prepare(Pane pane) {
 
         //start i stop
         Circle end = new Circle();
@@ -37,7 +37,16 @@ public class AnimationUpdate implements Observer, Display {
         circle.setStrokeWidth(5);
         circle.setFill(Color.MAGENTA);
 
+
         pane.getChildren().addAll(circle, end, start);
+
+
+    }
+
+    public void removeAll(Pane pane){
+
+
+        pane.getChildren().removeAll(pane.getChildren());
 
 
     }
@@ -46,7 +55,7 @@ public class AnimationUpdate implements Observer, Display {
     public void update(MovementParameters movementParameters) {
 
         Platform.runLater(() -> {
-            pos = (movementParameters.getHeight() / 12.82); //to 12.82 jest skad ze 5000 czyli wysokosc na 390 czyli droga do przejscia
+            pos = (movementParameters.getHeight() / 38.46); //to 12.82 jest skad ze 5000 czyli wysokosc na 390 czyli droga do przejscia
 
         });
 
