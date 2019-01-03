@@ -1,6 +1,6 @@
 .chart {
     -fx-background-image: url("ChartBackground.PNG");
-    -fx-legend-visible: false;
+    -fx-legend-visible: false;  
 }
 
 .chart-symbol {
@@ -8,11 +8,17 @@
     -fx-background-color: #0181e2;
     -fx-shape: "M2,0 L5,4 L8,0 L10,0 L10,2 L6,5 L10,8 L10,10 L8,10 L5,6 L2,10 L0,10 L0,8 L4,5 L0,2 L0,0 Z";
 }
+@font-face {
+    font-family: 'Pixel';
+    src: url('ARCADECLASSIC.TTF');
+}
 #chartPane {
     -fx-background-color: black;
 }
 #Cockpit{
-    -fx-background-image: url("Cockpit.jpg");
+    -fx-background-image: url("Cockpit.jpg");    
+    -fx-background-size: contain;
+    -fx-background-position: center center;
 }
 #usePane{
     -fx-background-image: url("ChartBackground.PNG");
@@ -20,7 +26,66 @@
 }
 #animationPane{
     -fx-background-image: url("AnimationBackground.gif");
-    -fx-background-repeat: stretch;  
-    -fx-background-size: stretch;
+    -fx-background-repeat: no-repeat;  
+    -fx-background-size: cover;
     -fx-background-position: center center;
+}
+#btnUp{
+    -fx-font-family: "Pixel";
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+#btnUp:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+#btnUp:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+#btnUp Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
+
+#btnDown{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-family: "Pixel";
+    -fx-font-size: 1.1em;
+}
+#btnDown:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+#btnDown:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+#btnDown Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
 }
