@@ -28,7 +28,7 @@ public class AnimationUpdate implements Observer, Display {
 
     public void prepare(Pane pane, Label label1, Label label2) {
         counter=0;
-        rocketFile = new File("src/sample/Rocket100.png");
+        rocketFile = new File("Mirek.png");
         if(rocketFile.exists())
         {
             Image diverImage = new Image(rocketFile.toURI().toString());
