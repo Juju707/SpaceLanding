@@ -1,8 +1,11 @@
 package sample;
 
 import javafx.application.Platform;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 
@@ -13,6 +16,7 @@ public class AnimationUpdate implements Observer, Display {
     private double yc = 10; //start
     private double yend = 400;
     private Circle circle = new Circle(); //to statek
+    private Image image=new Image ("file:Rocket100.png");
     private double pos = 0; //obliczanie pozycji statku
 
     public void prepare(Pane pane) {
@@ -35,9 +39,7 @@ public class AnimationUpdate implements Observer, Display {
         circle.setCenterY(yc);
         circle.setRadius(5.0);
         circle.setStrokeWidth(5);
-        circle.setFill(Color.MAGENTA);
-
-
+        //circle.setFill(new ImagePattern(image));
         pane.getChildren().addAll(circle, end, start);
 
 
