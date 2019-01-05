@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.control.Button?>
@@ -11,7 +12,11 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <center>
-      <Pane fx:id="animationPane" BorderPane.alignment="CENTER" />
+      <Pane fx:id="animationPane" BorderPane.alignment="CENTER">
+         <stylesheets>
+            <URL value="@Intro.css" />
+            <URL value="@Back.css" />
+         </stylesheets></Pane>
    </center>
    <right>
       <Pane fx:id="chartPane" prefHeight="494.0" prefWidth="307.0" BorderPane.alignment="CENTER">

@@ -26,12 +26,7 @@
     -fx-background-image: url("ChartBackground.PNG");
     -fx-border-color:purple;
 }
-#animationPane{
-    -fx-background-image: url("AnimationBackground.gif");
-    -fx-background-repeat: no-repeat;  
-    -fx-background-size: cover;
-    -fx-background-position: center center;
-}
+
 #btnUp{
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
@@ -89,3 +84,4 @@
     -fx-fill: white;
     -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
 }
+

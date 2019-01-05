@@ -1,0 +1,6 @@
+#animationPane{
+    -fx-background-image: url("AnimationBackground.gif");
+    -fx-background-repeat: no-repeat;  
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}

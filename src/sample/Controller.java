@@ -10,6 +10,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
+import java.sql.Time;
+import java.util.concurrent.TimeUnit;
+
+
 public class Controller {
 
     private RocketMovement rocketMovement;
@@ -51,7 +55,7 @@ public class Controller {
     }
 
     @FXML
-    void startClicked(ActionEvent event) {
+    void startClicked(ActionEvent event) throws InterruptedException {
 
         //jesli juz bylo uruchamiane kiedys to najpierw zamkniecie poprzedniego watku
         if(run){
@@ -59,7 +63,11 @@ public class Controller {
 
             run=false;
         }
+        //animationPane.setStyle("@Intro.css");
 
+        //TimeUnit.MILLISECONDS.sleep(5200);
+        //animationPane.setStyle("@Back.css");
+        //Pierdolę najwyżej pójdę z tym do Klaudii czy coś
         rocketMovement=new RocketMovement();
         rocketMovement.setUt(0); //na poczatku tylko sobie spada
 
