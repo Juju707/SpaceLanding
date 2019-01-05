@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Platform;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -8,48 +9,43 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+import java.io.File;
+
 
 public class AnimationUpdate implements Observer, Display {
 
-
-    private double xc = 200;
+    File rocketFile;
+    ImageView rocket = new ImageView();
+    private double xc = 390;
     private double yc = 10; //start
     private double yend = 400;
-    private Circle circle = new Circle(); //to statek
-    private Image image=new Image ("file:Rocket100.png");
     private double pos = 0; //obliczanie pozycji statku
+    private double startHeight=15000;
+    private double path=yend-yc;
+    private double factor=startHeight/path;
+    private int counter; //pierwszy pomiar jaki daje mi thread jest jakis lewy wiec wywalam go w ten sposob, ze mam licznik
 
-    public void prepare(Pane pane) {
 
-        //start i stop
-        Circle end = new Circle();
-        end.setCenterX(200);
-        end.setCenterY(yend);
-        end.setRadius(5);
-        end.setStrokeWidth(5);
+    public void prepare(Pane pane, Label label1, Label label2) {
+        counter=0;
+        rocketFile = new File("src/sample/Rocket100.png");
+        if(rocketFile.exists())
+        {
+            Image diverImage = new Image(rocketFile.toURI().toString());
+            rocket.setImage(diverImage);
+        }
 
-        Circle start = new Circle();
-        start.setCenterX(xc);
-        start.setCenterY(yc);
-        start.setRadius(5);
-        start.setStrokeWidth(5);
+        rocket.setX(xc);
+        rocket.setY(yend-startHeight/factor);
 
-        //statek
-        circle.setCenterX(xc);
-        circle.setCenterY(yc);
-        circle.setRadius(5.0);
-        circle.setStrokeWidth(5);
-        //circle.setFill(new ImagePattern(image));
-        pane.getChildren().addAll(circle, end, start);
+        pane.getChildren().addAll(rocket, label1, label2);
 
 
     }
 
     public void removeAll(Pane pane){
 
-
         pane.getChildren().removeAll(pane.getChildren());
-
 
     }
 
@@ -57,8 +53,9 @@ public class AnimationUpdate implements Observer, Display {
     public void update(MovementParameters movementParameters) {
 
         Platform.runLater(() -> {
-            pos = (movementParameters.getHeight() / 38.46); //to 12.82 jest skad ze 5000 czyli wysokosc na 390 czyli droga do przejscia
 
+            pos = (movementParameters.getHeight() / factor); //to 12.82 jest skad ze 5000 czyli wysokosc na 390 czyli droga do przejscia
+            counter++;
         });
 
         display();
@@ -67,7 +64,9 @@ public class AnimationUpdate implements Observer, Display {
     @Override
     public void display() {
         //wyslanie statku na odpowiednia pozycje
-        circle.setCenterX(xc);
-        circle.setCenterY(yend - pos);
+        if(counter>0) {
+            rocket.setX(xc);
+            rocket.setY(yend - pos);
+        }
     }
 }

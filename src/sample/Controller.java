@@ -5,10 +5,15 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
+
+import java.io.*;
+import java.util.Scanner;
 
 public class Controller {
 
@@ -36,6 +41,15 @@ public class Controller {
     @FXML
     private TextField speedField;
 
+    @FXML
+    private TextField FuelLeftField;
+
+    @FXML
+    private Label scoreLabel;
+
+    @FXML
+    private Label bestScore;
+
 
     public void initialize() {
 
@@ -43,6 +57,11 @@ public class Controller {
         FuelUsageField.setFocusTraversable(false);
         btnStart.setFocusTraversable(false);
         speedField.setFocusTraversable(false);
+        chart.setFocusTraversable(false);
+        FuelLeftField.setFocusTraversable(false);
+
+        bestScore.setText(String.valueOf(readScore("src\\sample\\score.txt")));
+
 
         //wylaczam przyciski zeby ich uzytkownik nie kliknął bo bedzie błąd
         btnUp.setDisable(true);
@@ -52,7 +71,8 @@ public class Controller {
 
     @FXML
     void startClicked(ActionEvent event) {
-
+        bestScore.setText(String.valueOf(readScore("src\\sample\\score.txt")));
+        FuelLeftField.setText(String.valueOf(1730.14));
         //jesli juz bylo uruchamiane kiedys to najpierw zamkniecie poprzedniego watku
         if(run){
             rocketMovement.interrupt();
@@ -71,9 +91,9 @@ public class Controller {
 
         AnimationUpdate au=new AnimationUpdate();
         au.removeAll(animationPane);
-        au.prepare(animationPane);
+        au.prepare(animationPane, bestScore, scoreLabel);
 
-        SpeedFieldUpdate sfu=new SpeedFieldUpdate(speedField);
+        SpeedFuelUpdate sfu=new SpeedFuelUpdate(speedField, FuelLeftField);
 
         rocketMovement.addObserver(chartUpdate);
         rocketMovement.addObserver(au);
@@ -133,4 +153,35 @@ public class Controller {
         System.out.println(rocketMovement.getUt());
         FuelUsageField.setText(String.valueOf(Math.abs(rocketMovement.getUt())));
     }
+
+    private void saveScore(String name, double score){
+
+        //utworzenie obiektu PrintWriter
+        PrintWriter save;
+        try { //otoczony blokiem try i catch zapis do pliku
+            save = new PrintWriter(name); //przypisanie referencji do obiektu
+                save.write(String.valueOf(score));
+            save.close(); //zamniecie zapisu
+
+        } catch (FileNotFoundException e1) { //obsługa wyjątków
+            e1.printStackTrace();
+        }
+    }
+
+    private double readScore(String name){
+        double result=0;
+        try { //otoczony blokiem try i catch zapis do pliku
+            File file =
+                    new File(name);
+            Scanner sc = new Scanner(file);
+
+            while (sc.hasNextLine())
+                result= Double.valueOf(sc.nextLine());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 }

@@ -11,7 +11,19 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <center>
-      <Pane fx:id="animationPane" BorderPane.alignment="CENTER" />
+      <Pane fx:id="animationPane" prefHeight="448.0" prefWidth="579.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="scoreLabel" alignment="CENTER" focusTraversable="false" layoutX="651.0" layoutY="24.0" prefHeight="18.0" prefWidth="114.0" text="Best score:" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="bestScore" alignment="CENTER" focusTraversable="false" layoutX="651.0" layoutY="60.0" prefHeight="18.0" prefWidth="114.0" text="353647" textAlignment="CENTER" textFill="#fad30a">
+               <font>
+                  <Font name="Comic Sans MS" size="19.0" />
+               </font>
+            </Label>
+         </children></Pane>
    </center>
    <right>
       <Pane fx:id="chartPane" prefHeight="494.0" prefWidth="307.0" BorderPane.alignment="CENTER">
@@ -27,20 +39,26 @@
             <Button fx:id="btnStart" layoutX="138.0" layoutY="14.0" mnemonicParsing="false" onAction="#startClicked" text="Start" />
             <Pane fx:id="Cockpit" layoutY="294.0" prefHeight="200.0" prefWidth="307.0">
                <children>
-                  <Button fx:id="btnUp" layoutX="103.0" layoutY="147.0" mnemonicParsing="false" onAction="#upClicked" prefHeight="37.0" prefWidth="56.0" text="Add" />
-                  <Button fx:id="btnDown" layoutX="186.0" layoutY="147.0" mnemonicParsing="false" onAction="#downClicked" prefHeight="37.0" prefWidth="83.0" text="Reduce" />
-                  <TextField fx:id="FuelUsageField" editable="false" layoutX="15.0" layoutY="122.0" prefHeight="25.0" prefWidth="73.0" />
-                  <TextField fx:id="speedField" editable="false" layoutX="14.0" layoutY="45.0" prefHeight="28.0" prefWidth="71.0" />
+                  <Button fx:id="btnUp" layoutX="224.0" layoutY="90.0" mnemonicParsing="false" onAction="#upClicked" prefHeight="37.0" prefWidth="56.0" text="Add" />
+                  <Button fx:id="btnDown" layoutX="210.0" layoutY="147.0" mnemonicParsing="false" onAction="#downClicked" prefHeight="37.0" prefWidth="83.0" text="Reduce" />
+                  <TextField fx:id="FuelUsageField" editable="false" layoutX="8.0" layoutY="96.0" prefHeight="25.0" prefWidth="73.0" />
+                  <TextField fx:id="speedField" editable="false" layoutX="9.0" layoutY="40.0" prefHeight="28.0" prefWidth="71.0" />
                   <Label fx:id="speedLabel" layoutX="5.0" layoutY="13.0" text="Current speed" textFill="WHITE">
                      <font>
                         <Font name="Comic Sans MS" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="fuelLabel" layoutX="21.0" layoutY="91.0" text="Fuel Usage" textFill="WHITE">
+                  <Label fx:id="fuelLabel" layoutX="14.0" layoutY="72.0" text="Fuel usage" textFill="WHITE">
                      <font>
                         <Font name="Comic Sans MS" size="12.0" />
                      </font>
                   </Label>
+                  <Label fx:id="fuelLeftLabel" layoutX="14.0" layoutY="127.0" text="Fuel left" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="FuelLeftField" editable="false" layoutX="8.0" layoutY="153.0" prefHeight="25.0" prefWidth="73.0" />
                </children>
             </Pane>
          </children>
