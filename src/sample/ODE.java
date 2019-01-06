@@ -32,6 +32,7 @@ public class ODE implements FirstOrderDifferentialEquations {
     @Override
     public void computeDerivatives(double t, double[] x, double[] dxdt) throws MaxCountExceededException, DimensionMismatchException {
         //załóżmy że nasze x[0] to h,x[1] to v,x[2] to m
+        if(x[2]<=1000) u=0;
         dxdt[0] = x[1];
         dxdt[1] = -g-k*u/x[2];
         dxdt[2]= u;

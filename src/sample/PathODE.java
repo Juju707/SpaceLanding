@@ -55,9 +55,7 @@ public class PathODE implements StepHandler {
             h=0;
         else  h=x[0];
 
-        if(x[0]<=0)
-            v=0;
-        else  v=x[1];
+        v=x[1];
 
         if(x[2]<=1000)
            m=1000;

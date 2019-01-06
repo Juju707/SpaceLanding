@@ -20,14 +20,9 @@ public class RocketMovement implements Observable,Runnable {
     private double fuelsMass = 1730.14;//[kg]
     private double mt ;//[kg]
     private double mi = -16.5;//[kg/s]
+    private double lastSpeed=0;
 
-    public boolean isRunning() {
-        return isRunning;
-    }
 
-    public void setRunning(boolean running) {
-        isRunning = running;
-    }
 
     public double getUt() {
         return ut;
@@ -37,13 +32,6 @@ public class RocketMovement implements Observable,Runnable {
         this.ut = ut;
     }
 
-    public double getVt() {
-        return vt;
-    }
-
-    public void setVt(double vt) {
-        this.vt = vt;
-    }
 
     private void getPosition() {
         //u(t) to prędkość spalania paliwa i jej wartość może być zmienna
@@ -72,6 +60,7 @@ public class RocketMovement implements Observable,Runnable {
         movement.setHeight(path.getH());
         movement.setSpeed(path.getV());
         movement.setMass(path.getM());
+
 
     }
 
@@ -120,7 +109,9 @@ public class RocketMovement implements Observable,Runnable {
             try {
                 fuelsMass+=ut; //oblicza obecna mase paliwa
                 if(fuelsMass<0) fuelsMass=0;
-                if(movement.getHeight()==0) interrupt(); //jak dotknie ksiezyca to wyladował i koniec
+                if(movement.getHeight()==0) {
+                    interrupt(); //jak dotknie ksiezyca to wyladował i koniec
+                }
                 getPosition();
                 notifyObservers();
                 rocket.sleep(1000);

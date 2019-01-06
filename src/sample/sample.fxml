@@ -23,6 +23,11 @@
                   <Font name="Comic Sans MS" size="19.0" />
                </font>
             </Label>
+            <Label fx:id="endGameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="208.0" prefHeight="77.0" prefWidth="832.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="ArcadeClassic" size="58.0" />
+               </font>
+            </Label>
          </children></Pane>
    </center>
    <right>

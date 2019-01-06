@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -50,6 +51,9 @@ public class Controller {
     @FXML
     private Label bestScore;
 
+    @FXML
+    private Label endGameLabel;
+
 
     public void initialize() {
 
@@ -59,6 +63,7 @@ public class Controller {
         speedField.setFocusTraversable(false);
         chart.setFocusTraversable(false);
         FuelLeftField.setFocusTraversable(false);
+        endGameLabel.setVisible(false);
 
         bestScore.setText(String.valueOf(readScore("src\\sample\\score.txt")));
 
@@ -93,11 +98,15 @@ public class Controller {
         au.removeAll(animationPane);
         au.prepare(animationPane, bestScore, scoreLabel);
 
-        SpeedFuelUpdate sfu=new SpeedFuelUpdate(speedField, FuelLeftField);
+        SpeedFuelUpdate sfu=new SpeedFuelUpdate(speedField, FuelLeftField, FuelUsageField);
+
+        endGame endGame=new endGame(endGameLabel, animationPane, readScore("src\\sample\\score.txt"), bestScore);
+      //  endGame.prepare();
 
         rocketMovement.addObserver(chartUpdate);
         rocketMovement.addObserver(au);
         rocketMovement.addObserver(sfu);
+        rocketMovement.addObserver(endGame);
 
         FuelUsageField.setText(String.valueOf(rocketMovement.getUt()));
 
@@ -154,19 +163,7 @@ public class Controller {
         FuelUsageField.setText(String.valueOf(Math.abs(rocketMovement.getUt())));
     }
 
-    private void saveScore(String name, double score){
 
-        //utworzenie obiektu PrintWriter
-        PrintWriter save;
-        try { //otoczony blokiem try i catch zapis do pliku
-            save = new PrintWriter(name); //przypisanie referencji do obiektu
-                save.write(String.valueOf(score));
-            save.close(); //zamniecie zapisu
-
-        } catch (FileNotFoundException e1) { //obsługa wyjątków
-            e1.printStackTrace();
-        }
-    }
 
     private double readScore(String name){
         double result=0;
@@ -183,5 +180,7 @@ public class Controller {
 
         return result;
     }
+
+
 
 }

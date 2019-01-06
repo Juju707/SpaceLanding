@@ -11,10 +11,12 @@ public class SpeedFuelUpdate implements Observer, Display {
     private TextField speedField;
     private TextField fuelLeftField;
     private double massLeft;
+    private  TextField fuelUsage;
 
-    public SpeedFuelUpdate(TextField speedField, TextField fuelLeftField) {
+    public SpeedFuelUpdate(TextField speedField, TextField fuelLeftField, TextField fuelUsage) {
         this.speedField = speedField;
         this.fuelLeftField=fuelLeftField;
+        this.fuelUsage=fuelUsage;
     }
 
     @Override
@@ -32,6 +34,8 @@ public class SpeedFuelUpdate implements Observer, Display {
 
            if(movementParameters.getMass()<=0) massLeft=1730.14;
            else massLeft=movementParameters.getMass()-1000;
+
+           if(movementParameters.getMass()==1000) fuelUsage.setText("0.0");
 
         });
 

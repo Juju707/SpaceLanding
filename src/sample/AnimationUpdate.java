@@ -28,9 +28,10 @@ public class AnimationUpdate implements Observer, Display {
 
     public void prepare(Pane pane, Label label1, Label label2) {
         counter=0;
-        rocketFile = new File("Mirek.png");
+        rocketFile = new File("src\\sample\\Klaudia.png"); //tu bedzie zmiana przy wyborze gracza
         if(rocketFile.exists())
         {
+            System.out.println("co jest");
             Image diverImage = new Image(rocketFile.toURI().toString());
             rocket.setImage(diverImage);
         }
