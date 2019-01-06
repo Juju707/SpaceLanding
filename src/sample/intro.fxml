@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.IntroController">
    <children>
       <Label fx:id="instructionTxt" layoutX="351.0" layoutY="27.0" text="jak grac">
@@ -16,21 +15,29 @@
          </font>
       </Label>
       <Button fx:id="okBtn" layoutX="353.0" layoutY="41.0" mnemonicParsing="false" onAction="#okClicked" text="czaje" />
-      <Label fx:id="playerTxt" layoutX="283.0" layoutY="44.0" prefHeight="44.0" prefWidth="183.0" text="choose  your  fighter">
+      <Label fx:id="playerTxt" layoutX="283.0" layoutY="44.0" prefHeight="44.0" prefWidth="183.0" text="choose  your  fighter" textFill="WHITE">
          <font>
             <Font name="ArcadeClassic" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="playBtn" layoutX="362.0" layoutY="439.0" mnemonicParsing="false" onAction="#playClicked" text="grej" />
-      <ImageView fx:id="klaudiaImage" fitHeight="337.0" fitWidth="325.0" layoutX="69.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Klaudia700.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="mirekImage" fitHeight="325.0" fitWidth="325.0" layoutX="375.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Mirek700.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="playBtn" layoutX="362.0" layoutY="462.0" mnemonicParsing="false" onAction="#playClicked" text="grej" />
+      <Pane fx:id="mirekPane" layoutX="387.0" layoutY="98.0" prefHeight="339.0" prefWidth="340.0">
+         <children>
+            <ImageView fx:id="mirekImage" fitHeight="325.0" fitWidth="325.0" layoutX="8.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Mirek700.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="klaudiaPane" layoutX="36.0" layoutY="98.0" prefHeight="339.0" prefWidth="340.0">
+         <children>
+            <ImageView fx:id="klaudiaImage" fitHeight="337.0" fitWidth="325.0" layoutX="8.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Klaudia700.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </Pane>

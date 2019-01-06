@@ -37,6 +37,12 @@ public class IntroController {
     @FXML
     private ImageView mirekImage;
 
+    @FXML
+    private Pane mirekPane;
+
+    @FXML
+    private Pane klaudiaPane;
+
     protected static String player = null;
 
 
@@ -47,6 +53,8 @@ public class IntroController {
         playBtn.setVisible(false);
         klaudiaImage.setVisible(false);
         mirekImage.setVisible(false);
+        mirekPane.setVisible(false);
+        klaudiaPane.setVisible(false);
 
     }
 
@@ -61,6 +69,8 @@ public class IntroController {
         okBtn.setDisable(true);
         klaudiaImage.setVisible(true);
         mirekImage.setVisible(true);
+        mirekPane.setVisible(true);
+        klaudiaPane.setVisible(true);
 
 
         klaudiaImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

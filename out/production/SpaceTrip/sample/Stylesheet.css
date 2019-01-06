@@ -17,6 +17,25 @@
 #chartPane {
     -fx-background-color: black;
 }
+#mainPane {
+    -fx-background-image: url("intro.gif");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+#mirekPane{
+    -fx-background-color: transparent;
+    -fx-border-style: solid;
+    -fx-border-width: 5px;
+    -fx-border-color: blue;
+}
+#klaudiaPane{
+    -fx-background-color: transparent;
+    -fx-border-style: solid;
+    -fx-border-width: 5px;
+    -fx-border-color: pink;
+}
+
 #Cockpit{
     -fx-background-image: url("Cockpit.jpg");    
     -fx-background-size: contain;
