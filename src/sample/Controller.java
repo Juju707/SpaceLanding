@@ -19,7 +19,7 @@ import java.util.Scanner;
 public class Controller {
 
     private RocketMovement rocketMovement;
-    private boolean run=false;
+    private boolean run = false;
 
     @FXML
     private ScatterChart<Number, Number> chart;
@@ -79,29 +79,29 @@ public class Controller {
         bestScore.setText(String.valueOf(readScore("src\\sample\\score.txt")));
         FuelLeftField.setText(String.valueOf(1730.14));
         //jesli juz bylo uruchamiane kiedys to najpierw zamkniecie poprzedniego watku
-        if(run){
+        if (run) {
             rocketMovement.interrupt();
 
-            run=false;
+            run = false;
         }
 
-        rocketMovement=new RocketMovement();
+        rocketMovement = new RocketMovement();
         rocketMovement.setUt(0); //na poczatku tylko sobie spada
 
         rocketMovement.start();
-        run=true;
+        run = true;
 
         chart.getData().removeAll(chart.getData());
-        ChartUpdate chartUpdate=new ChartUpdate(chart);
+        ChartUpdate chartUpdate = new ChartUpdate(chart);
 
-        AnimationUpdate au=new AnimationUpdate();
+        AnimationUpdate au = new AnimationUpdate();
         au.removeAll(animationPane);
         au.prepare(animationPane, bestScore, scoreLabel);
 
-        SpeedFuelUpdate sfu=new SpeedFuelUpdate(speedField, FuelLeftField, FuelUsageField);
+        SpeedFuelUpdate sfu = new SpeedFuelUpdate(speedField, FuelLeftField, FuelUsageField);
 
-        endGame endGame=new endGame(endGameLabel, animationPane, readScore("src\\sample\\score.txt"), bestScore);
-      //  endGame.prepare();
+        endGame endGame = new endGame(endGameLabel, animationPane, readScore("src\\sample\\score.txt"), bestScore);
+        //  endGame.prepare();
 
         rocketMovement.addObserver(chartUpdate);
         rocketMovement.addObserver(au);
@@ -145,7 +145,7 @@ public class Controller {
         lessFuel();
     }
 
-    private void moreFuel(){
+    private void moreFuel() {
         rocketMovement.setUt(rocketMovement.getUt() - 1);
         if (rocketMovement.getUt() < -16.5)
             rocketMovement.setUt(-16.5);
@@ -153,10 +153,10 @@ public class Controller {
         FuelUsageField.setText(String.valueOf(Math.abs(rocketMovement.getUt())));
     }
 
-    private void lessFuel(){
-        rocketMovement.setUt(rocketMovement.getUt()+1);
+    private void lessFuel() {
+        rocketMovement.setUt(rocketMovement.getUt() + 1);
 
-        if(rocketMovement.getUt()>0)
+        if (rocketMovement.getUt() > 0)
             rocketMovement.setUt(0);
 
         System.out.println(rocketMovement.getUt());
@@ -164,23 +164,21 @@ public class Controller {
     }
 
 
-
-    private double readScore(String name){
-        double result=0;
+    private double readScore(String name) {
+        double result = 0;
         try { //otoczony blokiem try i catch zapis do pliku
             File file =
                     new File(name);
             Scanner sc = new Scanner(file);
 
             while (sc.hasNextLine())
-                result= Double.valueOf(sc.nextLine());
+                result = Double.valueOf(sc.nextLine());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
         return result;
     }
-
 
 
 }

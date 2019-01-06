@@ -2,7 +2,7 @@ package sample;
 
 import javafx.collections.ObservableList;
 
-public class DataUpdate implements Observer{
+public class DataUpdate implements Observer {
     private ObservableList<MovementParameters> data;
 
     public DataUpdate(ObservableList<MovementParameters> data) {

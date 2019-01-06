@@ -46,23 +46,23 @@ public class PathODE implements StepHandler {
     @Override
     public void handleStep(StepInterpolator stepInterpolator, boolean b) throws MaxCountExceededException {
 
-        double t=stepInterpolator.getCurrentTime();
-        double[] x=stepInterpolator.getInterpolatedState();
+        double t = stepInterpolator.getCurrentTime();
+        double[] x = stepInterpolator.getInterpolatedState();
 
         //to poki co, potem gra ma sie tu konczyc bo to znaczy ze wyladowalo
 
-        if(x[0]<=0)
-            h=0;
-        else  h=x[0];
+        if (x[0] <= 0)
+            h = 0;
+        else h = x[0];
 
-        v=x[1];
+        v = x[1];
 
-        if(x[2]<=1000)
-           m=1000;
-        else m=x[2];
+        if (x[2] <= 1000)
+            m = 1000;
+        else m = x[2];
 
 
-        System.out.println("t= "+t+" "+h+" "+v+" "+m); //wyświeltenie wyniku symualcji
+        System.out.println("t= " + t + " " + h + " " + v + " " + m); //wyświeltenie wyniku symualcji
 
     }
 }

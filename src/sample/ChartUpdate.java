@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 
-public class ChartUpdate implements  Observer, Display{
+public class ChartUpdate implements Observer, Display {
 
     private ScatterChart<Number, Number> chart;
     private XYChart.Series<Number, Number> series = new XYChart.Series<>();

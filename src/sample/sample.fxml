@@ -15,12 +15,12 @@
          <children>
             <Label fx:id="scoreLabel" alignment="CENTER" focusTraversable="false" layoutX="651.0" layoutY="24.0" prefHeight="18.0" prefWidth="114.0" text="Best score:" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Comic Sans MS" size="19.0" />
+                  <Font name="ArcadeClassic" size="19.0" />
                </font>
             </Label>
             <Label fx:id="bestScore" alignment="CENTER" focusTraversable="false" layoutX="651.0" layoutY="60.0" prefHeight="18.0" prefWidth="114.0" text="353647" textAlignment="CENTER" textFill="#fad30a">
                <font>
-                  <Font name="Comic Sans MS" size="19.0" />
+                  <Font name="ArcadeClassic" size="19.0" />
                </font>
             </Label>
             <Label fx:id="endGameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="208.0" prefHeight="77.0" prefWidth="832.0" text="Label" textFill="WHITE">
@@ -50,17 +50,17 @@
                   <TextField fx:id="speedField" editable="false" layoutX="9.0" layoutY="40.0" prefHeight="28.0" prefWidth="71.0" />
                   <Label fx:id="speedLabel" layoutX="5.0" layoutY="13.0" text="Current speed" textFill="WHITE">
                      <font>
-                        <Font name="Comic Sans MS" size="12.0" />
+                        <Font name="ArcadeClassic" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="fuelLabel" layoutX="14.0" layoutY="72.0" text="Fuel usage" textFill="WHITE">
+                  <Label fx:id="fuelLabel" layoutX="15.0" layoutY="76.0" text="Fuel usage" textFill="WHITE">
                      <font>
-                        <Font name="Comic Sans MS" size="12.0" />
+                        <Font name="ArcadeClassic" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="fuelLeftLabel" layoutX="14.0" layoutY="127.0" text="Fuel left" textFill="WHITE">
+                  <Label fx:id="fuelLeftLabel" layoutX="17.0" layoutY="133.0" text="Fuel left" textFill="WHITE">
                      <font>
-                        <Font name="Comic Sans MS" size="12.0" />
+                        <Font name="ArcadeClassic" size="12.0" />
                      </font>
                   </Label>
                   <TextField fx:id="FuelLeftField" editable="false" layoutX="8.0" layoutY="153.0" prefHeight="25.0" prefWidth="73.0" />

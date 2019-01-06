@@ -20,31 +20,34 @@ public class AnimationUpdate implements Observer, Display {
     private double yc = 10; //start
     private double yend = 400;
     private double pos = 0; //obliczanie pozycji statku
-    private double startHeight=15000;
-    private double path=yend-yc;
-    private double factor=startHeight/path;
+    private double startHeight = 15000;
+    private double path = yend - yc;
+    private double factor = startHeight / path;
     private int counter; //pierwszy pomiar jaki daje mi thread jest jakis lewy wiec wywalam go w ten sposob, ze mam licznik
-
+    private IntroController i = new IntroController();
 
     public void prepare(Pane pane, Label label1, Label label2) {
-        counter=0;
-        rocketFile = new File("src\\sample\\Klaudia.png"); //tu bedzie zmiana przy wyborze gracza
-        if(rocketFile.exists())
-        {
-            System.out.println("co jest");
+        counter = 0;
+
+        if (i.player.equals("k"))
+            rocketFile = new File("src\\sample\\Klaudia.png"); //tu bedzie zmiana przy wyborze gracza
+        else rocketFile = new File("src\\sample\\Mirek.png");
+
+        if (rocketFile.exists()) {
+
             Image diverImage = new Image(rocketFile.toURI().toString());
             rocket.setImage(diverImage);
         }
 
         rocket.setX(xc);
-        rocket.setY(yend-startHeight/factor);
+        rocket.setY(yend - startHeight / factor);
 
         pane.getChildren().addAll(rocket, label1, label2);
 
 
     }
 
-    public void removeAll(Pane pane){
+    public void removeAll(Pane pane) {
 
         pane.getChildren().removeAll(pane.getChildren());
 
@@ -65,7 +68,7 @@ public class AnimationUpdate implements Observer, Display {
     @Override
     public void display() {
         //wyslanie statku na odpowiednia pozycje
-        if(counter>0) {
+        if (counter > 0) {
             rocket.setX(xc);
             rocket.setY(yend - pos);
         }
