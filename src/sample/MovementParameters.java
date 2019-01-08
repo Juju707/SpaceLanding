@@ -1,6 +1,7 @@
 package sample;
 
 public class MovementParameters {
+    //Parameters of rocket's movement
     private double speed;
     private double height;
     private double mass;

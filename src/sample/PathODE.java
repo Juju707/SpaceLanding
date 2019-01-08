@@ -35,21 +35,16 @@ public class PathODE implements StepHandler {
         this.m = m;
     }
 
-    //Ponieważ zaimplementowaliśmy interface musimy zainicjalizować metody
-    //Metoda inicjalizacji,tutaj niepotrzebna,ale musi być zainicjalizowana
     @Override
     public void init(double v, double[] doubles, double v1) {
 
     }
 
-    //Metoda pozwalająca na wyświetlanie oraz zapisywanie kolejnych wartości x i y w chwili t
     @Override
     public void handleStep(StepInterpolator stepInterpolator, boolean b) throws MaxCountExceededException {
 
         double t = stepInterpolator.getCurrentTime();
         double[] x = stepInterpolator.getInterpolatedState();
-
-        //to poki co, potem gra ma sie tu konczyc bo to znaczy ze wyladowalo
 
         if (x[0] <= 0)
             h = 0;
@@ -62,7 +57,7 @@ public class PathODE implements StepHandler {
         else m = x[2];
 
 
-        System.out.println("t= " + t + " " + h + " " + v + " " + m); //wyświeltenie wyniku symualcji
+        System.out.println("t= " + t + " " + h + " " + v + " " + m); //Displaying in console simulation's results
 
     }
 }

@@ -21,17 +21,20 @@ public class ODE implements FirstOrderDifferentialEquations {
         this.u = u;
     }
 
-    //Ponieważ zaimplementowaliśmy interface musimy przesłonić dane w interface'ie metody
-    //Ustalamy wielkość naszej macierzy wektora
+
+    //Matrix dimension
     @Override
     public int getDimension() {
         return 3;
     }
 
-    //Metoda pozwalająca na ustalenie równań/wielkości wyznaczających naszą macierz wektorową
+
     @Override
     public void computeDerivatives(double t, double[] x, double[] dxdt) throws MaxCountExceededException, DimensionMismatchException {
-        //załóżmy że nasze x[0] to h,x[1] to v,x[2] to m
+        //x[0] - h
+        // x[1] - v
+        // x[2] - m
+        //Differential equations
         if (x[2] <= 1000) u = 0;
         dxdt[0] = x[1];
         dxdt[1] = -g - k * u / x[2];

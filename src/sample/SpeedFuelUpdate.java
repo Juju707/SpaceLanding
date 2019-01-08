@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.application.Platform;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 
@@ -21,6 +20,7 @@ public class SpeedFuelUpdate implements Observer, Display {
 
     @Override
     public void display() {
+        //Displaying current speed and fuel's mass left in text fields
         String result1 = String.format("%.2f", speed);
         String result2 = String.format("%.2f", massLeft);
         speedField.setText(result1);
@@ -29,6 +29,7 @@ public class SpeedFuelUpdate implements Observer, Display {
 
     @Override
     public void update(MovementParameters movementParameters) {
+        //Updating the current data
         Platform.runLater(() -> {
             speed = movementParameters.getSpeed();
 

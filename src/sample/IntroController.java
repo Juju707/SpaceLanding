@@ -8,13 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 public class IntroController {
@@ -43,7 +41,19 @@ public class IntroController {
     @FXML
     private Pane klaudiaPane;
 
-    protected static String player = null;
+    @FXML
+    private Label rule1;
+
+    @FXML
+    private Label rule2;
+
+    @FXML
+    private Label rule3;
+
+    @FXML
+    private Label rule4;
+
+    protected static String player = "m";
 
 
     public void initialize() {
@@ -71,6 +81,10 @@ public class IntroController {
         mirekImage.setVisible(true);
         mirekPane.setVisible(true);
         klaudiaPane.setVisible(true);
+        rule1.setVisible(false);
+        rule2.setVisible(false);
+        rule3.setVisible(false);
+        rule4.setVisible(false);
 
 
         klaudiaImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

@@ -20,7 +20,7 @@ public class AnimationUpdate implements Observer, Display {
     private double yc = 10; //start
     private double yend = 400;
     private double pos = 0; //obliczanie pozycji statku
-    private double startHeight = 15000;
+    private double startHeight = 50000;
     private double path = yend - yc;
     private double factor = startHeight / path;
     private int counter; //pierwszy pomiar jaki daje mi thread jest jakis lewy wiec wywalam go w ten sposob, ze mam licznik
@@ -28,37 +28,35 @@ public class AnimationUpdate implements Observer, Display {
 
     public void prepare(Pane pane, Label label1, Label label2) {
         counter = 0;
-
+        //Choosing proper rocket image
         if (i.player.equals("k"))
             rocketFile = new File("src\\sample\\Klaudia.png"); //tu bedzie zmiana przy wyborze gracza
         else rocketFile = new File("src\\sample\\Mirek.png");
 
         if (rocketFile.exists()) {
-
             Image diverImage = new Image(rocketFile.toURI().toString());
             rocket.setImage(diverImage);
         }
-
+        //Setting rockets postion on the start
         rocket.setX(xc);
         rocket.setY(yend - startHeight / factor);
-
+        //Adding all of the elements
         pane.getChildren().addAll(rocket, label1, label2);
 
 
     }
 
     public void removeAll(Pane pane) {
-
+        //Remove previous rocket and everything associated with it
         pane.getChildren().removeAll(pane.getChildren());
 
     }
 
     @Override
     public void update(MovementParameters movementParameters) {
-
+        //Update rocket's current position
         Platform.runLater(() -> {
-
-            pos = (movementParameters.getHeight() / factor); //to 12.82 jest skad ze 5000 czyli wysokosc na 390 czyli droga do przejscia
+            pos = (movementParameters.getHeight() / factor);
             counter++;
         });
 
@@ -67,7 +65,7 @@ public class AnimationUpdate implements Observer, Display {
 
     @Override
     public void display() {
-        //wyslanie statku na odpowiednia pozycje
+        //Displaying rocket's current position
         if (counter > 0) {
             rocket.setX(xc);
             rocket.setY(yend - pos);
