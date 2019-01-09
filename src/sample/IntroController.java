@@ -90,7 +90,7 @@ public class IntroController {
         rule3.setVisible(false);
         rule4.setVisible(false);
 
-        //Event handler if one of ImageViews is clicked.
+
         klaudiaImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             @Override
@@ -100,6 +100,7 @@ public class IntroController {
                 System.out.println(player);
             }
         });
+
 
         mirekImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
