@@ -17,6 +17,7 @@ import java.io.IOException;
 
 public class IntroController {
 
+    //Controller of IntroWindow.
     @FXML
     private Label instructionTxt;
 
@@ -58,6 +59,7 @@ public class IntroController {
 
     public void initialize() {
 
+        //Initialize method - hides some of GUI elements
         playerTxt.setVisible(false);
         playBtn.setDisable(true);
         playBtn.setVisible(false);
@@ -70,6 +72,8 @@ public class IntroController {
 
     @FXML
     void okClicked(ActionEvent event) {
+        //Method after button "understood" is clicked. Hides elements of GUI with instructions and itself.
+        // Shows "choose your fighter" menu.
 
         playerTxt.setVisible(true);
         playBtn.setDisable(false);
@@ -86,7 +90,7 @@ public class IntroController {
         rule3.setVisible(false);
         rule4.setVisible(false);
 
-
+        //Event handler if one of ImageViews is clicked.
         klaudiaImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             @Override
@@ -112,11 +116,13 @@ public class IntroController {
 
     @FXML
     void playClicked(ActionEvent event) throws IOException {
+        //Method after "play" button clicked.
+        //Creates new window with game.
         Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample/sample.fxml"));
         primaryStage.setTitle("Space Landing");
         primaryStage.setScene(new Scene(root));
-        root.getStylesheets().add(getClass().getResource("Stylesheet.css").toExternalForm());
+        root.getStylesheets().add(getClass().getClassLoader().getResource("sample/Stylesheet.css").toExternalForm());
         primaryStage.show();
         primaryStage.setResizable(false);
 

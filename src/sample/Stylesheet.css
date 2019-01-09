@@ -1,5 +1,5 @@
 .chart {
-    -fx-background-image: url("ChartBackground.PNG");
+    -fx-background-image: url("resources/ChartBackground.PNG");
     -fx-legend-visible: false;  
 }
 
@@ -9,7 +9,7 @@
     -fx-shape: "M2,0 L5,4 L8,0 L10,0 L10,2 L6,5 L10,8 L10,10 L8,10 L5,6 L2,10 L0,10 L0,8 L4,5 L0,2 L0,0 Z";
 }
 @font-face {
-    src: url('ARCADECLASSIC.TTF');
+    src: url('resources/ARCADECLASSIC.TTF');
 }
 .button{
     -fx-font-family: ArcadeClassic;
@@ -18,7 +18,7 @@
     -fx-background-color: black;
 }
 #mainPane {
-    -fx-background-image: url("intro.gif");
+    -fx-background-image: url('resources/intro.gif');
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
     -fx-background-position: center center;
@@ -37,16 +37,16 @@
 }
 
 #Cockpit{
-    -fx-background-image: url("Cockpit.jpg");    
+    -fx-background-image: url("resources/Cockpit.jpg");
     -fx-background-size: contain;
     -fx-background-position: center center;
 }
 #usePane{
-    -fx-background-image: url("ChartBackground.PNG");
+    -fx-background-image: url("resources/ChartBackground.PNG");
     -fx-border-color:purple;
 }
 #animationPane{
-    -fx-background-image: url("AnimationBackground.gif");
+    -fx-background-image: url("resources/AnimationBackground.gif");
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
     -fx-background-position: center center;

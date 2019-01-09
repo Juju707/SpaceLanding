@@ -5,9 +5,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
 
 import java.io.File;
 
@@ -27,11 +24,13 @@ public class AnimationUpdate implements Observer, Display {
     private IntroController i = new IntroController();
 
     public void prepare(Pane pane, Label label1, Label label2) {
+
+
         counter = 0;
         //Choosing proper rocket image
         if (i.player.equals("k"))
-            rocketFile = new File("src\\sample\\Klaudia.png"); //tu bedzie zmiana przy wyborze gracza
-        else rocketFile = new File("src\\sample\\Mirek.png");
+            rocketFile = new File("src/sample/resources/Klaudia.png"); //tu bedzie zmiana przy wyborze gracza
+        else rocketFile = new File("src/sample/resources/Mirek.png");
 
         if (rocketFile.exists()) {
             Image diverImage = new Image(rocketFile.toURI().toString());

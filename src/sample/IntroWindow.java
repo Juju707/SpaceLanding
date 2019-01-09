@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 public class IntroWindow extends Application {
 
+    //Window opened when the application starts.
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("intro.fxml"));

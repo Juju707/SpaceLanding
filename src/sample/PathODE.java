@@ -43,15 +43,18 @@ public class PathODE implements StepHandler {
     @Override
     public void handleStep(StepInterpolator stepInterpolator, boolean b) throws MaxCountExceededException {
 
+        //Saves current step to x vector.
         double t = stepInterpolator.getCurrentTime();
         double[] x = stepInterpolator.getInterpolatedState();
 
+        //If height equals 0 it does not change anymore.
         if (x[0] <= 0)
             h = 0;
         else h = x[0];
 
         v = x[1];
 
+        //If current mass equals mass of the rocket it also does not change anymore.
         if (x[2] <= 1000)
             m = 1000;
         else m = x[2];

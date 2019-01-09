@@ -56,6 +56,7 @@ public class Controller {
 
 
     public void initialize() {
+        //Initializes GUI elemtns.
 
         //nie sa elementami cyklu focusowania jak przesuwam strzałkami
         FuelUsageField.setFocusTraversable(false);
@@ -76,6 +77,7 @@ public class Controller {
 
     @FXML
     void startClicked(ActionEvent event) {
+        //When the game starts. Creates Thread and adds Observers. Kills previus Thread if existed.
         bestScore.setText(String.valueOf(readScore("src\\sample\\score.txt")));
         FuelLeftField.setText(String.valueOf(1730.14));
         //jesli juz bylo uruchamiane kiedys to najpierw zamkniecie poprzedniego watku
@@ -101,7 +103,6 @@ public class Controller {
         SpeedFuelUpdate sfu = new SpeedFuelUpdate(speedField, FuelLeftField, FuelUsageField);
 
         endGame endGame = new endGame(endGameLabel, animationPane, readScore("src\\sample\\score.txt"), bestScore);
-        //  endGame.prepare();
 
         rocketMovement.addObserver(chartUpdate);
         rocketMovement.addObserver(au);
@@ -114,6 +115,7 @@ public class Controller {
         btnUp.setDisable(false);
         btnDown.setDisable(false);
 
+        //Listens if arrows up or down are clicked.
         //key listereny do strzałek połączone z przyciskami
         btnUp.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -138,14 +140,15 @@ public class Controller {
     @FXML
     void upClicked(ActionEvent event) {
         moreFuel();
-    }
+    } //method when button clicked.
 
     @FXML
     void downClicked(ActionEvent event) {
         lessFuel();
-    }
+    } //method when button clicked.
 
     private void moreFuel() {
+        //Increases fuel usage.
         rocketMovement.setUt(rocketMovement.getUt() - 1);
         if (rocketMovement.getUt() < -16.5)
             rocketMovement.setUt(-16.5);
@@ -154,6 +157,7 @@ public class Controller {
     }
 
     private void lessFuel() {
+        //Decreases fuel usage.
         rocketMovement.setUt(rocketMovement.getUt() + 1);
 
         if (rocketMovement.getUt() > 0)
@@ -165,6 +169,7 @@ public class Controller {
 
 
     private double readScore(String name) {
+        //Reads current best score from file.
         double result = 0;
         try { //otoczony blokiem try i catch zapis do pliku
             File file =

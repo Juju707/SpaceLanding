@@ -15,6 +15,8 @@ public class ChartUpdate implements Observer, Display {
 
     @Override
     public void update(MovementParameters movementParameters) {
+
+        //updates series with new data.
         Platform.runLater(() -> {
             series.getData().add(new XYChart.Data<>(movementParameters.getSpeed(), movementParameters.getHeight()));
         });
@@ -24,6 +26,7 @@ public class ChartUpdate implements Observer, Display {
 
     @Override
     public void display() {
+        //displays new data on chart.
         chart.setAnimated(false);
         chart.getData().removeAll(chart.getData());
         chart.getData().addAll(series);

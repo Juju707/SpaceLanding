@@ -28,6 +28,7 @@
                   <Font name="ArcadeClassic" size="58.0" />
                </font>
             </Label>
+            <Label layoutX="685.0" layoutY="463.0" text="Ruda&amp;Sarczix Entertaiment" textFill="WHITE" />
          </children></Pane>
    </center>
    <right>

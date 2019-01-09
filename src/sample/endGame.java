@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 
 public class endGame implements Observer, Display {
 
+    //Class that updates labels and score.txt after the game ended.
     private Label label;
     private double speed;
     private double fuelUsed;
@@ -28,11 +29,15 @@ public class endGame implements Observer, Display {
     @Override
     public void display() {
         if (counter > 0) {
+            //Calculates fuel usage.
             fuelUsed = Math.round(fuelUsed * 100) / 100;
 
+            //Checks if rocket landed properly
             if (((speed < 0 && speed > -2) || (speed > 0 && speed < 2)) && height == 0) {
                 String fuel = String.format("%.2f", fuelUsed);
 
+                //Checks if score is better that current best score.
+                //If it is save new best score to file and displays it.
                 if (fuelUsed < bestScore) {
                     fuel = fuel.replace('-', ' ');
                     System.out.println(fuel);
@@ -40,13 +45,15 @@ public class endGame implements Observer, Display {
                     saveScore("src\\sample\\score.txt", fuel);
                     bestScoreLabel.setText(fuel);
                 } else {
+                    //If not shows only current score.
                     label.setText("Score  " + fuel);
                 }
+
 
                 pane.getChildren().add(label);
                 label.setVisible(true);
 
-
+                //If rocket did not land properly shows "game over" label
             } else if (height == 0 && (!(speed < 0 && speed > -2) || !(speed > 0 && speed < 2))) {
                 label.setText("Game over");
                 pane.getChildren().add(label);
@@ -61,6 +68,7 @@ public class endGame implements Observer, Display {
     @Override
     public void update(MovementParameters movementParameters) {
         Platform.runLater(() -> {
+            //updates parameters with Thread
             speed = movementParameters.getSpeed();
             height = movementParameters.getHeight();
             counter++;
@@ -72,6 +80,7 @@ public class endGame implements Observer, Display {
     }
 
     private void saveScore(String name, String score) {
+        //Saves to file.
 
         //utworzenie obiektu PrintWriter
         PrintWriter save;
