@@ -54,12 +54,17 @@ public class Controller {
     @FXML
     private Label endGameLabel;
 
+    @FXML
+    private TextField heightField;
+
+
 
     public void initialize() {
         //Initializes GUI elemtns.
 
         //nie sa elementami cyklu focusowania jak przesuwam strzałkami
         FuelUsageField.setFocusTraversable(false);
+        heightField.setFocusTraversable(false);
         btnStart.setFocusTraversable(false);
         speedField.setFocusTraversable(false);
         chart.setFocusTraversable(false);
@@ -100,7 +105,7 @@ public class Controller {
         au.removeAll(animationPane);
         au.prepare(animationPane, bestScore, scoreLabel);
 
-        SpeedFuelUpdate sfu = new SpeedFuelUpdate(speedField, FuelLeftField, FuelUsageField);
+        SpeedFuelUpdate sfu = new SpeedFuelUpdate(speedField, FuelLeftField, FuelUsageField, heightField);
 
         endGame endGame = new endGame(endGameLabel, animationPane, readScore("src\\sample\\score.txt"), bestScore);
 
