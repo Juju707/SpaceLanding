@@ -1,9 +1,17 @@
 package sample;
 
 import javafx.application.Platform;
+import org.apache.commons.math3.exception.DimensionMismatchException;
+import org.apache.commons.math3.exception.MaxCountExceededException;
+import org.apache.commons.math3.exception.NoBracketingException;
+import org.apache.commons.math3.exception.NumberIsTooSmallException;
+import org.apache.commons.math3.ode.ExpandableStatefulODE;
 import org.apache.commons.math3.ode.FirstOrderDifferentialEquations;
 import org.apache.commons.math3.ode.FirstOrderIntegrator;
+import org.apache.commons.math3.ode.nonstiff.ClassicalRungeKuttaIntegrator;
 import org.apache.commons.math3.ode.nonstiff.EulerIntegrator;
+import org.apache.commons.math3.ode.nonstiff.MidpointIntegrator;
+import org.apache.commons.math3.ode.nonstiff.RungeKuttaIntegrator;
 
 import java.util.ArrayList;
 
@@ -43,12 +51,12 @@ public class RocketMovement implements Observable, Runnable {
             ode = new ODE(ut);
         else ode = new ODE(mt);
         //Thanks to Apache Commons Math the differential equations could be easily solved with Euler integration method
-        FirstOrderIntegrator euler = new EulerIntegrator(1);
+        FirstOrderIntegrator integrator = new ClassicalRungeKuttaIntegrator(0.1);
         PathODE path = new PathODE();
-        euler.addStepHandler(path);
+        integrator.addStepHandler(path);
         double[] yStart = new double[]{ht, vt, mt};
         double[] yStop = new double[]{1, 1, 1};
-        euler.integrate(ode, 0, yStart, 1, yStop);
+        integrator.integrate(ode, 0, yStart, 1, yStop);
 
         ht = path.getH();
         vt = path.getV();

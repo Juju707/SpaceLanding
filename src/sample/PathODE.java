@@ -44,7 +44,6 @@ public class PathODE implements StepHandler {
     public void handleStep(StepInterpolator stepInterpolator, boolean b) throws MaxCountExceededException {
 
         //Saves current step to x vector.
-        double t = stepInterpolator.getCurrentTime();
         double[] x = stepInterpolator.getInterpolatedState();
 
         //If height equals 0 it does not change anymore.
@@ -60,7 +59,7 @@ public class PathODE implements StepHandler {
         else m = x[2];
 
 
-        System.out.println("t= " + t + " " + h + " " + v + " " + m); //Displaying in console simulation's results
+        System.out.println( h + " " + v + " " + m); //Displaying in console simulation's results
 
     }
 }
