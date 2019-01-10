@@ -14,32 +14,82 @@ import org.apache.commons.math3.ode.nonstiff.MidpointIntegrator;
 import org.apache.commons.math3.ode.nonstiff.RungeKuttaIntegrator;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
+/**
+ * Class RocketMovement represents Observable that calculates movement parameters and updates Observers.
+ *
+ * @author Julia Szymczak and Sara Strzalka
+ * @version 1.0
+ */
 public class RocketMovement implements Observable, Runnable {
 
+    /**
+     * Represents parameters of rocket movement.
+     */
     private MovementParameters movement;
+    /**
+     * Represents Thread.
+     */
     private Thread rocket;
+    /**
+     * Represents list of observers.
+     */
     private volatile ArrayList<Observer> observers = new ArrayList<>();
+    /**
+     * Represents state of Thread.
+     */
     private boolean isRunning;
-    private double ut = 0; //prędkość zmiany paliwa,zmienna przez użytkownika
+    /**
+     * Represents fuel usage in kilograms.
+     */
+    private double ut = 0; //[kg]
+    /**
+     * Represents current height of rocket in meters.
+     */
     private double ht = 50000;//[m]
+    /**
+     * Represents current speed of rocket in meters per second.
+     */
     private double vt = -150;//[m/s]
+    /**
+     * Represents mass of rocket without fuel in kilograms.
+     */
     private double rocketsMass = 1000;//[kg]
+    /**
+     * Represents mass of fuel in kilograms.
+     */
     private double fuelsMass = 1730.14;//[kg]
+    /**
+     * Represents whole mass of rocket and fuel in kilograms.
+     */
     private double mt;//[kg]
+    /**
+     * Represents upper limit of fuel usage.
+     */
     private double mi = -16.5;//[kg/s]
-    private double lastSpeed = 0;
 
-
+    /**
+     * Gets current usage of fuel.
+     *
+     * @return current fuel usage.
+     */
     public double getUt() {
         return ut;
     }
 
+    /**
+     * Sets usage of fuel.
+     *
+     * @param ut Fuel usage in current time.
+     */
     public void setUt(double ut) {
         this.ut = ut;
     }
 
-
+    /**
+     * Calculates current position of rocket. Integrates equations.
+     */
     private void getPosition() {
         //u(t) is the speed of fuel's usage and it can change
         //height is the speed of height's changing
@@ -71,16 +121,31 @@ public class RocketMovement implements Observable, Runnable {
 
     }
 
+    /**
+     * Adds observer to the list of Observers if the list does not contains this observer.
+     *
+     * @param observer Observer.
+     */
     @Override
     public void addObserver(Observer observer) {
         if (!observers.contains(observer)) observers.add(observer);
     }
 
+    /**
+     * Removes Observer from list of Observers, when it contains this Observer.
+     *
+     * @param observer Observer
+     * @throws NoSuchElementException if there is no such observer in the list of Observers.
+     */
     @Override
     public void removeObserver(Observer observer) {
         if (observers.contains(observer)) observers.remove(observer);
     }
 
+
+    /**
+     * Updates Observers with current movement parameters.
+     */
     @Override
     public void notifyObservers() {
         Platform.runLater(() -> {
@@ -89,21 +154,32 @@ public class RocketMovement implements Observable, Runnable {
         });
     }
 
+    /**
+     * Creates reference and starts Thread.
+     */
     void start() {
         rocket = new Thread(this, "Rocket movement");
         rocket.start();
     }
 
+    /**
+     * Stops Thread.
+     */
     public void stop() {
         isRunning = false;
     }
 
-
+    /**
+     * Interrupts Thread.
+     */
     void interrupt() {
         isRunning = false;
         rocket.interrupt();
     }
 
+    /**
+     * Calculates movement parameters when the Thread is started.
+     */
     @Override
     public void run() {
         isRunning = true;

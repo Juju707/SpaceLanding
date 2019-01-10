@@ -2,7 +2,7 @@ package sample;
 /**
  * Display methods
  *
- * @author Sara Strzałka
+ * @author Julia Szymczak and Sara Strzalka
  * @version 1.0
  */
 public interface Display {

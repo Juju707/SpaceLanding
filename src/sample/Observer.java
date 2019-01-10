@@ -2,7 +2,7 @@ package sample;
 
 /**
  * Interface for observing
- * @author Juju
+ * @author Julia Szymczak and Sara Strzalka
  * @version 1.0
  */
 public interface Observer {

@@ -7,18 +7,56 @@ import javafx.scene.layout.Pane;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+/**
+ * Class endGame represents class that displays proper messages when game ends.
+ *
+ * @author Julia Szymczak and Sara Strzalka
+ * @version 1.0
+ */
 public class endGame implements Observer, Display {
 
     //Class that updates labels and score.txt after the game ended.
+    /**
+     * Represents label with state at the end of the game.
+     */
     private Label label;
+    /**
+     * Represents current speed.
+     */
     private double speed;
+    /**
+     * Represents current fuel usage.
+     */
     private double fuelUsed;
+    /**
+     * Represents Pane with game.
+     */
     private Pane pane;
+    /**
+     * Represents best score.
+     */
     private double bestScore;
+    /**
+     * Represents curren height.
+     */
     private double height;
+    /**
+     * Represents counter with numer of updates.
+     */
     private int counter = 0;
+    /**
+     * Represents Label with best score.
+     */
     private Label bestScoreLabel;
 
+    /**
+     * Creates object with following parameters.
+     *
+     * @param label label with state at the end of the game.
+     * @param pane pane with game.
+     * @param bestScore best score.
+     * @param bestScoreLabel label with best score
+     */
     public endGame(Label label, Pane pane, double bestScore, Label bestScoreLabel) {
         this.label = label;
         this.pane = pane;
@@ -26,6 +64,9 @@ public class endGame implements Observer, Display {
         this.bestScore = bestScore;
     }
 
+    /**
+     * Displays score or 'game over' when the game ends.
+     */
     @Override
     public void display() {
         if (counter > 0) {
@@ -65,6 +106,11 @@ public class endGame implements Observer, Display {
         }
     }
 
+    /**
+     * Updates parameters of rocket movements.
+     *
+     * @param movementParameters Rocket movement parameters.
+     */
     @Override
     public void update(MovementParameters movementParameters) {
         Platform.runLater(() -> {
@@ -79,6 +125,12 @@ public class endGame implements Observer, Display {
         display();
     }
 
+    /**
+     * Saves best score to file.
+     *
+     * @param name File name.
+     * @param score Score to save.
+     */
     private void saveScore(String name, String score) {
         //Saves to file.
 

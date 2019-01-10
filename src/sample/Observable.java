@@ -2,7 +2,7 @@ package sample;
 
 /**
  * Interface for object being observable
- * @author Juju
+ * @author Julia Szymczak and Sara Strzalka
  * @version 1.0
  */
 public interface Observable {
