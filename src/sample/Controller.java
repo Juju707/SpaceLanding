@@ -16,53 +16,87 @@ import javafx.scene.layout.Region;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * Class Controller represents GUI control methods of Main Window.
+ * @author Julia Szymczak and Sara Strzalka
+ * @version 1.0
+ */
 public class Controller {
-
+    /**
+     * Attribute representing rocket's movement thread.
+     */
     private RocketMovement rocketMovement;
+    /**
+     * Attribute representing game's actual status of running.
+     */
     private boolean run = false;
-
+    /**
+     * Represents Scatter Chart with visual representation of rocket's movement .
+     */
     @FXML
     private ScatterChart<Number, Number> chart;
-
+    /**
+     * Represents Button responsible for adding more fuel.
+     */
     @FXML
     private Button btnUp;
-
+    /**
+     * Represents Button responsible for reducing the amount of fuel.
+     */
     @FXML
     private Button btnDown;
-
+    /**
+     * Represents Button responsible for starting the game.
+     */
     @FXML
     private Button btnStart;
-
+    /**
+     * Represents Pane containing the main scene of game.
+     */
     @FXML
     private Pane animationPane;
-
+    /**
+     * Represents Text Field with information about current fuel's usage.
+     */
     @FXML
     private TextField FuelUsageField;
-
+    /**
+     * Represents Text Field with information about rocket's current speed.
+     */
     @FXML
     private TextField speedField;
-
+    /**
+     * Represents Text Field with information about current fuel's capacity.
+     */
     @FXML
     private TextField FuelLeftField;
-
+    /**
+     * Represents Label with information about setting new best score.
+     */
     @FXML
     private Label scoreLabel;
-
+    /**
+     * Represents Label with information about best score.
+     */
     @FXML
     private Label bestScore;
-
+    /**
+     * Represents Label with information about lost game.
+     */
     @FXML
     private Label endGameLabel;
-
+    /**
+    * Represents Text Field with information about rocket's current height.
+    */
     @FXML
     private TextField heightField;
 
 
-
+    /**
+     * Initialize application after launching.
+     */
     public void initialize() {
-        //Initializes GUI elemtns.
-
-        //nie sa elementami cyklu focusowania jak przesuwam strzałkami
+        //Initializes GUI elements.
         FuelUsageField.setFocusTraversable(false);
         heightField.setFocusTraversable(false);
         btnStart.setFocusTraversable(false);
@@ -70,22 +104,20 @@ public class Controller {
         chart.setFocusTraversable(false);
         FuelLeftField.setFocusTraversable(false);
         endGameLabel.setVisible(false);
-
         bestScore.setText(String.valueOf(readScore("src\\sample\\score.txt")));
-
-
-        //wylaczam przyciski zeby ich uzytkownik nie kliknął bo bedzie błąd
         btnUp.setDisable(true);
-        btnDown.setDisable(true);
+        btnDown.setDisable(true); }
 
-    }
-
+    /**
+     * Method called when 'start' is clicked.
+     * Starts the game.
+     * @param event
+     */
     @FXML
     void startClicked(ActionEvent event) {
         //When the game starts. Creates Thread and adds Observers. Kills previus Thread if existed.
         bestScore.setText(String.valueOf(readScore("src\\sample\\score.txt")));
         FuelLeftField.setText(String.valueOf(1730.14));
-        //jesli juz bylo uruchamiane kiedys to najpierw zamkniecie poprzedniego watku
         if (run) {
             rocketMovement.interrupt();
 
@@ -93,8 +125,7 @@ public class Controller {
         }
 
         rocketMovement = new RocketMovement();
-        rocketMovement.setUt(0); //na poczatku tylko sobie spada
-
+        rocketMovement.setUt(0);
         rocketMovement.start();
         run = true;
 
@@ -115,13 +146,10 @@ public class Controller {
         rocketMovement.addObserver(endGame);
 
         FuelUsageField.setText(String.valueOf(rocketMovement.getUt()));
-
-        //wlaczam mozliwosc sterowania paliwem
         btnUp.setDisable(false);
         btnDown.setDisable(false);
 
-        //Listens if arrows up or down are clicked.
-        //key listereny do strzałek połączone z przyciskami
+        //Listeners if arrows up or down are clicked.
         btnUp.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -141,17 +169,28 @@ public class Controller {
         });
 
     }
-
+    /**
+     * Method called when 'up' is clicked.
+     * Adds more fuel.
+     * @param event
+     */
     @FXML
     void upClicked(ActionEvent event) {
         moreFuel();
     } //method when button clicked.
-
+    /**
+     * Method called when 'down' is clicked.
+     * Reduces the amount of fuel.
+     * @param event
+     */
     @FXML
     void downClicked(ActionEvent event) {
         lessFuel();
     } //method when button clicked.
-
+    /**
+     * Method called for rising the amount of used fuel.
+     * Changes parameter Ut in rocket's parameters which are linked with integrating class.
+     */
     private void moreFuel() {
         //Increases fuel usage.
         rocketMovement.setUt(rocketMovement.getUt() - 1);
@@ -161,6 +200,10 @@ public class Controller {
         FuelUsageField.setText(String.valueOf(Math.abs(rocketMovement.getUt())));
     }
 
+    /**\
+     * Method called for reducing the amount of used fuel.
+     * Changes parameter Ut in rocket's parameters which are linked with integrating class.
+     */
     private void lessFuel() {
         //Decreases fuel usage.
         rocketMovement.setUt(rocketMovement.getUt() + 1);
@@ -172,7 +215,11 @@ public class Controller {
         FuelUsageField.setText(String.valueOf(Math.abs(rocketMovement.getUt())));
     }
 
-
+    /**\
+     * Method called for reading best score.
+     * Reads the best score (the amount of used fuel) form file.
+     * @param name
+     */
     private double readScore(String name) {
         //Reads current best score from file.
         double result = 0;
